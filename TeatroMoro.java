@@ -5,9 +5,9 @@ import java.time.format.DateTimeFormatter;
 
 public class TeatroMoro {
     // Variables estáticas para contadores globales
-    static int totalAsientosDisponibles = 100;
-    static int totalAsientosReservados = 0;
-    static int totalAsientosVendidos = 0;
+    static int totalAsientosDisponibles = 100; // Watch valores
+    static int totalAsientosReservados = 0; // Watch valores
+    static int totalAsientosVendidos = 0; // Watch valores
 
     // Variables de instancia para información básica
     String nombreTeatro = "Teatro Moro";
@@ -43,6 +43,7 @@ public class TeatroMoro {
             System.out.print("Seleccione una opción: ");
 
             try {
+                //Breakpoint condicional (opcion < 1 || opcion > 5)                
                 opcion = scanner.nextInt();
             } catch (Exception e) {
                 scanner.nextLine();
@@ -82,12 +83,13 @@ public class TeatroMoro {
         System.out.print("Ingrese el número de asiento a reservar (1-100): ");
 
         try {
+            // Breakpoint condicional (numeroAsiento < 1 || numeroAsiento > 100)
             numeroAsiento = scanner.nextInt();
             if (numeroAsiento < 1 || numeroAsiento > 100) {
                 System.out.println("Número de asiento inválido. Debe estar entre 1 y 100.");
                 return;
             }
-
+            // Breakpoint validar disponibilidad
             disponibilidad = estadoAsientos[numeroAsiento].equals("DISPONIBLE");
 
             if (disponibilidad) {
@@ -118,7 +120,7 @@ public class TeatroMoro {
         try {
             asientoActual = scanner.nextInt();
 
-            // Validar que el asiento esté reservado
+            // Validar que el asiento esté reservado - Breakpoint condicional
             if (asientoActual < 1 || asientoActual > 100 ||
                     !estadoAsientos[asientoActual].equals("RESERVADO")) {
                 System.out.println("El asiento " + asientoActual + " no tiene una reserva activa.");
@@ -233,7 +235,7 @@ public class TeatroMoro {
         try {
             numeroAsiento = scanner.nextInt();
 
-            // Validar que el asiento esté vendido
+            // Validar que el asiento esté vendido - Breakpoint condicional
             if (numeroAsiento < 1 || numeroAsiento > 100) {
                 System.out.println("Número de asiento inválido.");
                 return;
@@ -244,7 +246,7 @@ public class TeatroMoro {
                 return;
             }
 
-            // Generar boleta
+            // Generar boleta - Breakpoint validar datos
             System.out.println("Generando boleta...");
             generarBoleta(numeroAsiento, 1, precioUnitario);
 
